@@ -52,7 +52,20 @@ li {
 
 .questionBox {
   border: 2px solid red;
+  margin-right: auto;
+  margin-left: auto;
 }
+
+.answersDiv {
+  border: 2px solid blue;
+
+}
+
+.alignText {
+  text-align: center;
+  color: green;
+}
+
 
 .timerStyle {
   border: 2px solid green;
