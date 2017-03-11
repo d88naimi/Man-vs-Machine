@@ -25,11 +25,20 @@ function shuffle(array) {
   return array;
 }
 
+// game object contains all methods and variables associated to game
 var game = {
+
+	// current question used to determine which question from trivia responses to display to page
 	currentQuestion: 0,
+
+	// ajaxabort doesnt actually abort ajax, it just prevents future callbacks from being stored in our trivia and wolfram arrays
 	ajaxAbort: false,
+
+	// these arrays will hold our questions and responses from wolfram after the gather questions method is run
 	triviaResponses: [],
 	wolframResponses: [],
+
+	// this method will generate question n from the trivia response array and display it to the page
 	displayQuestion: function(displayId, questionNumber){
 		var questionHeader = $("<h1>");
 		questionHeader.text(currentQuestion[questionNumber].question);
@@ -43,10 +52,21 @@ var game = {
 		answers[3].text(currentQuestion[questionNumber].incorrect_answers[2]);
 		answers[3].attr("answer", false);
 		ansers = shuffle(answers);
+		$("#"+displayId).append(questionHeader);
 		for(i=0; i<answers.length; i++){
-
+			answers[i].on("click", function(){
+				if(this.answer){
+					// display correct
+				}
+				else{
+					// display incorrect
+				};
+			});
+			$("#"+displayId).append(answers[i]);
 		};
 	},
+
+	// this method calls the open trivia api for 30 questions. those questions are then sent to wolfram and logged until we get 10 back.
 	gatherQuestions: function(){
 		var queryURL = "https://opentdb.com/api.php?amount=30&category=22&type=multiple";
 		$.ajax({
