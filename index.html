@@ -18,6 +18,9 @@
     <!-- Custom CSS -->
     <link href="./resources/css/one-page-wonder.css" rel="stylesheet">
 
+    <!-- Our own CSS -->
+    <link href="./resources/css/style.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,7 +30,16 @@
 
 </head>
 
+<!-- <body>
+<div class="fadeMe"></div>
+  <p>A bunch of content here...</p> -->
 
+<!--   <div class="splash-container">
+  <div class="spash-underlay">
+  <div class="cleverBot"> CleverBot </div>
+
+  </div>
+  </div> -->
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -66,41 +78,15 @@
         <div class="headline">
             <div class="container">
                 <h1>Man-VS-Machine</h1>
-                <h2>Trivia Game</h2>
+                <h2>Dare to play</h2>
             </div>
         </div>
     </header>
 
-    <!-- Clever Bot Modal  -->
-    <div id="cleverBot" class="container">
-  <h2>Clever Bot</h2>
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Talk to Me</button>
-
-
-        <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Howdy im CleverBot </h4>
-        </div>
-        <div class="modal-body">
-          <p>Talk to Me .</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Begin</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-        
-
+    <!-- Page Content -->
+    <div class="container">
 
         <hr class="featurette-divider">
-
-
 
         <!-- First Featurette -->
         <div class="featurette" id="about">
@@ -112,71 +98,10 @@
         </div>
 
         <hr class="featurette-divider">
-        
-        <div class="container">
-         <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h2>
-                                        <i class="user">
-                                        </i>
-                                        User
-                                    </h2>
-                                </div>
-                                <div class="panel-body">
-                                    <p>
-                                        User
-                                    </p>
-                                    <img id="userimage" class="featurette-image img-circle img-responsive pull-left" src="./resources/images/userimage.jpg">
-                                </div>
-                            </div>
-                        </div>
-
-
-             <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h2>
-                                        <i class="user">
-                                        </i>
-                                        Question
-                                    </h2>
-                                </div>
-                                <div class="panel-body">
-                                    <p>
-                                        yadayda
-                                    </p>
-                                    
-                                </div>
-                            </div>
-                        </div> 
-                        
-         <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h2>
-                                        <i class="wolfram">
-                                        </i>
-                                        Wolfram
-
-                                    </h2>
-                            <img class="featurette-image img-circle img-responsive pull-right" src="./resources/images/wolframalpha.svg">
-                                </div>
-                                <div class="panel-body">
-                                    <p>
-                                        yadayda
-                                    </p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-             </div> 
-
-        <hr class="featurette-divider">
 
         <!-- Second Featurette -->
         
-        <!-- <div class="featurette" id="services">
+        <div class="featurette" id="services">
             <img id="userimage" class="featurette-image img-circle img-responsive pull-left" src="./resources/images/userimage.jpg">
             <h2 class="featurette-heading">User
                 <span class="text-muted">Money Money Money.</span>
@@ -190,7 +115,7 @@
             </h2>
             <p class="lead">Results</p>
         
-        </div> -->
+        </div>
 
         <hr class="featurette-divider">
 
@@ -201,13 +126,8 @@
                 <span class="text-muted">Who is the Winner.</span>
             </h2>
             
-        
-
-
-
-
          <div class="container">
-                        <div class="col-md-4">
+                        <div class="col-md-4 offset-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4>
@@ -225,7 +145,10 @@
                             </div>
                         </div>
 
-                        <div class="col-md-4">
+
+
+                        
+                        <div class="col-md-4 offset-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4>
@@ -259,7 +182,7 @@
 
     </div>
 
-        <div class="container">
+<!--     <div class="container">
         <div class="row borderBoxRed">
             <div class="col-xs-12 borderBoxGreen">
                 <p class="borderBoxblue">Question <span>1:</span>
@@ -282,10 +205,49 @@
                 <a href="#"><div>4. Hello</div></a>
             </div>
 
-        </div>
-    </div>
 
-    <div class="container">
+        </div> -->
+        <div class="timerStyle">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div>
+                        <h3>Time Remaining:<span class="clip-text"></span>00:00</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="questionBox">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div>
+                        <h3 class="questionNum">Question 1:</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div>
+                        <h3 class="currQuestion">What is the capital of France?</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="answersDiv">
+                        <button type="button" class="btn btn-primary positionBtn styleBtn" id="an1" data-ans="one">Answer four</button><span>test</span>
+                        <button type="button" class="btn btn-primary positionBtn styleBtn" id="an2" data-ans="two">Answer four</button><span>test</span>
+                        <button type="button" class="btn btn-primary positionBtn styleBtn" id="an3" data-ans="three">Answer four</button><span>test</span>
+                        <button type="button" class="btn btn-primary positionBtn styleBtn" id="an4" data-ans="four">Answer four</button><span>test</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--     <div class="container">
         <div class="row borderBoxBlue">
             <div class="col-xs-12">
                 <img src="./resources/images/Gameshowhost.png">
@@ -302,7 +264,7 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
     <!-- /.container -->
 
     <!-- jQuery -->
