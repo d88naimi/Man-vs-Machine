@@ -22,9 +22,9 @@ console.log("hello, Start")
 
 	$("#cbOutput")
 		.append(
-			"<h3 class=''><span class= 'label')" +
-			+ "</span><strong>" +
-			response.clever_output + "</strong></h3>");
+			"<h3><span>" +
+			"<strong>" +
+			response.clever_output + "</strong></span></h3>");
 
 
 	console.log(response.clever_output)
