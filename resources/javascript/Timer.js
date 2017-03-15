@@ -106,13 +106,13 @@ awesome.doAwesome(function(timeLeft) {
 	//sending updated information to html after completing
 	// resetCounter/start functions to reset counter to 0
 	// and beging counting down from 20(line 54) to 0
-	$("#time-left").html(timeLeft);
+	$("#tiles").html(timeLeft);
 	//when 0 is reachead, run stop() function to stop
 	// subtracting 1 from timeleft variable and replace
 	// number with message defined in line 70
 	if (timeLeft === 0) {
 		this.stop();
-		$("#time-left").html("PlaceHolderText-TimeUp");
+		$("#tiles").html("Times Up!");
 	}
 });
 });
