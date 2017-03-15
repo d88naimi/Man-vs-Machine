@@ -1,6 +1,4 @@
 
-console.log("hello, Start")
-
 	var authKey = "CCCzkPEAa_f6rUIYoQWZehRqOFQ"
 	var question = null
 	var queryURLBase = "http://www.cleverbot.com/getreply?"
@@ -18,7 +16,7 @@ console.log("hello, Start")
 		crossOrigin: true,
 		dataType: 'jsonp',
 	}) .done(function(response){
-
+		//cleverbot Variable needed to continue conversation
 	var cleverBotCS = response.cs
 
 	console.log(cleverBotCS)
