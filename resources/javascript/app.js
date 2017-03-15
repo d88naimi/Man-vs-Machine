@@ -219,9 +219,5 @@ delay(function(){
 // 	console.log("GameStarted")
 // }
 
-<<<<<<< Updated upstream
 startTimer();
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
