@@ -29,7 +29,7 @@ function shuffle(array) {
 var game = {
 
 	// current question used to determine which question from trivia responses to display to page
-	currentQuestion: 0,
+	currentQuestion: 1,
 
 	// ajaxabort doesnt actually abort ajax, it just prevents future callbacks from being stored in our trivia and wolfram arrays
 	ajaxAbort: false,
@@ -39,30 +39,34 @@ var game = {
 	wolframResponses: [],
 
 	// this method will generate question n from the trivia response array and display it to the page
-	displayQuestion: function(displayId, questionNumber){
-		var questionHeader = $("<h1>");
-		questionHeader.text(currentQuestion[questionNumber].question);
-		var answers = [$("<p>"),$("<p>"),$("<p>"),$("<p>")];
-		answers[0].text(currentQuestion[questionNumber].correct_answer);
-		answers[0].attr("answer", true);
-		answers[1].text(currentQuestion[questionNumber].incorrect_answers[0]);
-		answers[1].attr("answer", false);
-		answers[2].text(currentQuestion[questionNumber].incorrect_answers[1]);
-		answers[2].attr("answer", false);
-		answers[3].text(currentQuestion[questionNumber].incorrect_answers[2]);
-		answers[3].attr("answer", false);
-		ansers = shuffle(answers);
-		$("#"+displayId).append(questionHeader);
-		for(i=0; i<answers.length; i++){
-			answers[i].on("click", function(){
-				if(this.answer){
-					// display correct
-				}
-				else{
-					// display incorrect
-				};
-			});
-			$("#"+displayId).append(answers[i]);
+	displayQuestion: function(){
+		// set question number
+		$("#incrementQuestion").text(this.currentQuestion)
+		// set the question text
+		$("#insertQuestion").text(this.triviaResponses[this.currentQuestion-1].question)
+		var buttonarr = [];
+		for(i=0; i<4; i++){
+			if (i === 3){
+				buttonarr.push(
+					$("<button>")
+						.addClass("btn btn-info positionBtn styleBtn")
+						.attr("number", 4)
+						.text(this.triviaResponses[this.currentQuestion-1].correct_answer)
+				);
+				continue;
+			};
+			buttonarr.push(
+				$("<button>")
+					.addClass("btn btn-info positionBtn styleBtn")
+					.attr("number", i+1)
+					.text(this.triviaResponses[this.currentQuestion-1].incorrect_answers[i])
+			);
+		};
+		console.log(buttonarr)
+		buttonarr = shuffle(buttonarr);
+		$(".answersDiv").empty();
+		for(i=0; i<buttonarr.length; i++){
+			$(".answersDiv").append(buttonarr[i]);
 		};
 	},
 
