@@ -66,181 +66,49 @@ var game = {
 		};
 	},
 
-	// this method calls the open trivia api for 30 questions. those questions are then sent to wolfram and logged until we get 10 back.
-	gatherQuestions: function(){
-		var queryURL = "https://opentdb.com/api.php?amount=30&category=22&type=multiple";
+	sendtoWolfram: function(triviaData){
+		for (i=0; i<triviaData.results.length;i++){
+			this.queryWolfram(triviaData.results[i].question, triviaData.results[i]);
+		};
+	},
+
+	// this method calls the trivia api for n amount of questions and sends them to the send to wolfram method when they return
+	queryTrivia: function(amount){
+		var queryURL = "https://opentdb.com/api.php?amount="+amount+"&category=22&type=multiple";
 		$.ajax({
     		url: queryURL,
     		method: "GET",
   		}).done(function(response) {
-  			for (i=0; i<response.results.length;i++){
-  				queryWolfram(response.results[i]);
+  			game.sendtoWolfram(response);
+  		});
+	},
+
+	// this method calls the wolfram API for a specified question, then if successfully answered
+	// stores the answer in an array along with the entire question object at the same index
+	queryWolfram: function(question, triviaQuestion){
+		var queryObj = {
+			appid: "A6PYJY-7QJY4JG733",
+			input: question,
+			output: "json",
+			format: "plaintext"
+		};
+		var URL = "http://api.wolframalpha.com/v2/query?";
+		var queryURL = URL + $.param(queryObj);
+		$.ajax({
+    		url: queryURL,
+    		method: "GET",
+    		crossDomain: true,
+    		dataType: "jsonp"
+  		}).done(function(response) {
+  			if (response.queryresult.success && game.ajaxAbort === false) {
+  				game.wolframResponses.push(response);
+  				game.triviaResponses.push(triviaQuestion);
   			};
   		});
-		function queryWolfram(triviaResponse){
-			var queryObj = {
-				appid: "A6PYJY-7QJY4JG733",
-				input: triviaResponse.question,
-				output: "json",
-				format: "plaintext"
-			};
-			var URL = "http://api.wolframalpha.com/v2/query?";
-			var queryURL = URL + $.param(queryObj);
-			$.ajax({
-	    		url: queryURL,
-	    		method: "GET",
-	    		crossDomain: true,
-	    		dataType: "jsonp"
-	  		}).done(function(response) {
-	  			if (response.queryresult.success && game.ajaxAbort === false) {
-	  				game.triviaResponses.push(triviaResponse);
-	  				game.wolframResponses.push(response);
-	  				if (game.triviaResponses.length === 10){
-	  					game.ajaxAbort = true;
-	  				};
-	  				console.log(game.triviaResponses);
-	  				console.log(game.wolframResponses);
-	  			};
-	  		});
-		};
-	},
+	}
 };
 
-// var questions = [];
 
-// var wolfram = {
-// 	queryWolfram: function(queryString){
-// 		var queryObj = {
-// 			appid: "A6PYJY-7QJY4JG733",
-// 			input: queryString,
-// 			output: "json",
-// 			format: "plaintext"
-// 		};
-// 		var URL = "http://api.wolframalpha.com/v2/query?";
-// 		var queryURL = URL + $.param(queryObj);
-// 		$.ajax({
-//     		url: queryURL,
-//     		method: "GET",
-//     		crossDomain: true,
-//     		dataType: "jsonp"
-//   		}).done(function(response) {
-//   			if (response.queryresult.success) {
-//   				if (questions.length < 10) {
-//   					console.log(queryString);
-//   					questions.push(queryString);
-//   					console.log(questions);
-//   				}
-//   			}
-//   		});
-// 	}
-// };
+game.queryTrivia(20);
 
-// var trivia = {
-// 	queryTrivia: function(amount){
-// 		var queryURL = "https://opentdb.com/api.php?amount="+amount+"&category=22&type=multiple";
-// 		$.ajax({
-//     		url: queryURL,
-//     		method: "GET",
-//   		}).done(function(response) {
-//   			for (i=0; i<response.results.length;i++){
-//   				// console.log(response.results[i].question);
-//   				wolfram.queryWolfram(response.results[i].question);
-//   			};
-//   			console.log(response);
-//   		});
-// 	}
-// };
 
-game.gatherQuestions();
-
-function startTimer(){
-
-//short hand document ready function
-$(function() {
-
-	var awesome = {
-	 	//setting up the variable to hold the timer function
-	 	gameTimerObject: {
-			//starting the counter with no numbers defined
-			counter: null,
-
-			timer: null,
-
-			//start of the timer function if it is not already running and count down by
-			// 1 number per second.
-			start: function(callBack) {
-				if (null != this.timer) {
-					return true;
-				}
-				else {
-					var self = this;
-					this.timer = setInterval(function() {
-						var currentCount = self.updateCounter();
-
-						callBack(currentCount);
-					}, 1000);
-
-					return ("number" === this.timer);
-				}
-			},
-			//unset timer and return to null state in variables.
-			stop: function() {
-				if (null !== this.timer) {
-					clearInterval(this.timer);
-					this.timer = null;
-				}
-			},
-			//resturning updates to counter variable
-			resetCounter: function(seconds) {
-				this.counter = seconds;
-				return this.counter;
-			},
-			//checks to see is counter varible is zero
-			// if counter is greater than 0 decrease by 
-			//1 every second until 0 is reached
-			updateCounter: function() {
-				this.counter = (this.counter > 0)
-				? this.counter - 1
-				: 0;
-				return this.counter;
-			}
-	 		// End of line
-	 	},
-							//this.gameTimerObject.clone()
-							doAwesome: function(cb) {
-								var newTimer = this.gameTimerObject
-			//variable holding total time, where the counter starts
-			var totalTime = 20;
-			//sending "totalTime" variable to html div
-			// $("#time-left").html(totalTime);
-			cb(totalTime);
-			this.gameTimerObject.resetCounter(totalTime);
-			this.gameTimerObject.start(cb);
-		}
-	}; // end of awesome
-
-			// This is what your buddy needs to do to use your object.
-			awesome.doAwesome(function(timeLeft) {
-				//sending updated information to html after completing
-				// resetCounter/start functions to reset counter to 0
-				// and beging counting down from 20(line 54) to 0
-				$("#tiles").html(timeLeft);
-				//when 0 is reachead, run stop() function to stop
-				// subtracting 1 from timeleft variable and replace
-				// number with message defined in line 70
-			if (timeLeft === 0) {
-			this.stop();
-			$("#tiles").html("Times Up!");
-						}
-		});
-	});
-}
-
-startTimer();
-// var cleverBot = {
-
-// };
-
-// hello@provenrecruiting.com
-
-// UCSD Extension Presentation
