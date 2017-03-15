@@ -1,34 +1,27 @@
-// wolfram-------------------------
 
-// appid wolfram A6PYJY-7QJY4JG733
 
-// http://api.wolframalpha.com/v1/result?appid=DEMO&i=How+far+is+Los+Angeles+from+New+York%3f
 
-// https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple
+$('#an1').click(function(){
 
-var wolfram = {
-	queryWolfram: function(queryString){
-		var queryObj = {
-			appid: "A6PYJY-7QJY4JG733",
-			i: queryString
-		};
-		var URL = "https://api.wolframalpha.com/v1/result?";
-		var queryURL = URL + $.param(queryObj);
-		$.ajax({
-    		url: queryURL,
-    		method: "GET"
-  		}).done(function(response) {
-  			console.log(response);
-  		});
-	}
-};
+	var wolframAnswered = "Wolfram Answered!";
 
-var trivia = {
+	// $('#an2').removeClass('btn-primary').addClass('btn-danger').addClass('wrongAnswer');
 
-};
+	$('#an3').removeClass('btn-info').addClass('btn-success').addClass('rightAnswer');
 
-var cleverBot = {
+	// $('#whoAnsweredThisMessage').animate({
+	// 	marginTop:0,
+	// 	duration: 800
 
-};
+	// }, 500, function(){
+	// 	$(this).after("<div>" + wolframAnswered + "</div>");
 
-wolfram.queryWolfram("how far away is the moon?");
+	// });
+
+});
+
+
+$('#an5').click(function(){
+
+	$('.disAp').fadeOut("slow");
+})
