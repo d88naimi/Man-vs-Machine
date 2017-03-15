@@ -101,7 +101,7 @@ var game = {
     		dataType: "jsonp"
   		}).done(function(response) {
   			if (response.queryresult.success && game.ajaxAbort === false) {
-  				game.wolframResponses.push(response);
+  				game.wolframResponses.push(response.queryresult.pods[1].subpods[0].plaintext);
   				game.triviaResponses.push(triviaQuestion);
   			};
   		});
