@@ -109,7 +109,7 @@ var game = {
 };
 
 
-game.queryTrivia(20);
+// game.queryTrivia(20);
 
 
 function startTimer(){
