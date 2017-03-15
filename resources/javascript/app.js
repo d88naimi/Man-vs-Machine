@@ -171,8 +171,8 @@ $(function() {
 	 		// End of line
 	 	},
 							//this.gameTimerObject.clone()
-							doAwesome: function(cb) {
-								var newTimer = this.gameTimerObject
+		doAwesome: function(cb) {
+			var newTimer = this.gameTimerObject
 			//variable holding total time, where the counter starts
 			var totalTime = 20;
 			//sending "totalTime" variable to html div
@@ -199,7 +199,29 @@ $(function() {
 		});
 	});
 }
+//delay function to start timer
+var delay = ( function() {
+    var timer = 0;
+    return function(callback, ms) {
+        clearTimeout (timer);
+        timer = setTimeout(callback, ms);
+    };
+})();
 
+delay(function(){
+   	startTimer();
+   	// doStuff();
+   	//45 second delay
+}, 10000 ); 
+// end delay
+
+// funtion doStuff(){
+// 	console.log("GameStarted")
+// }
+
+<<<<<<< Updated upstream
 startTimer();
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
