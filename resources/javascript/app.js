@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 // wolfram-------------------------
 
 // appid wolfram A6PYJY-7QJY4JG733
@@ -200,3 +201,5 @@ $(function() {
 }
 
 startTimer();
+=======
+>>>>>>> Stashed changes

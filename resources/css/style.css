@@ -22,8 +22,32 @@ body {
 	width: 50%;
 }
 
-img {
-	float: left;
+.imgToRepPlayers {
+  max-width:100%;
+  /*max-height:100%;*/
+
+}
+
+.heightForPanel {
+  height: 220px;
+
+
+}
+
+#playerOneImg {
+  background-image: url("../images/einstein-png-25.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+#wolframAlphaImg {
+  background-image: url("../images/wolfram-alpha2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
 
 blockquote {
