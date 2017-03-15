@@ -1,3 +1,8 @@
+body {
+  font-family: avenir;
+  background-color: #fff;
+}
+
 .borderBoxRed {
 	border: 2px solid red;
 	width: 50%;
@@ -24,6 +29,142 @@ img {
 blockquote {
 	float: left;
 }
+
+#answersHere a {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid blue;
+}
+
+li {
+  list-style-type: none;
+}
+
+.positionBtn {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  padding: 5px;
+
+}
+
+.styleBtn {
+  width: 60%;
+  text-align: center;
+  white-space: normal;
+
+}
+
+.whoAnsweredAnimation {
+
+}
+
+.wrongAnswer {
+  border: 5px solid red;
+  animation: blinker 1s linear;
+
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+
+.rightAnswer {
+  border: 5px solid green;
+  animation: blinker 1s linear;
+
+}
+
+
+.answersDiv {
+  text-align:center;
+
+}
+
+.alignText {
+  text-align: center;
+  color: green;
+}
+
+
+.timerStyle {
+  border: 2px solid green;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.countdown-label {
+  color: #65584c;
+  text-align: center;
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: 2px;
+  padding: 10px;
+
+}
+#countdown{
+  box-shadow: 0 1px 2px 0 rgba(1, 1, 1, 0.4);
+  width: 240px;
+  text-align: center;
+  border-radius: 5px;
+  margin: auto;
+
+}
+
+#countdown #tiles{
+  color: #fff;
+  text-shadow: 1px 1px 0px #ccc;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px 5px 0 0;
+  font-size: 48px;
+  font-weight: thin;
+  display: block;
+    
+}
+
+.colorFull {
+  background: #53bb74;
+}
+.colorHalf {
+  background: #ebc85d;
+}
+.colorEmpty {
+  background: #e5554e;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* THIS BELOW IS ALL CODE FOR CHAT BUBBLE RESPONSES FROM CLEVER BOT*/

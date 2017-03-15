@@ -1,179 +1,239 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="./resources/css/style.css">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<html lang="en">
 
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    
+
+    <title>Man-vs-Machine</title>
+
+    <!-- Bootstrap Core CSS -->
+    <!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link href="./resources/css/one-page-wonder.css" rel="stylesheet">
+
+    <!-- Our own CSS -->
+    <link href="./resources/css/style.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
-<body>	
-	<div class="container">
-		<div class="row borderBoxRed">
-			<div class="col-xs-12 borderBoxGreen">
-				<p class="borderBoxblue">Question <span>1:</span>
-				<p>What is the capital of Australia?</p>
-			</div>
 
-			<div class="col-xs-12">
-				<a href="#"><div>1. Hello</div></a>
-			</div>
+<!-- <body>
+<div class="fadeMe"></div>
+  <p>A bunch of content here...</p> -->
 
-			<div class="col-xs-12">
-				<a href="#"><div>2. World</div></a>
-			</div>
+<!--   <div class="splash-container">
+  <div class="spash-underlay">
+  <div class="cleverBot"> CleverBot </div>
 
-			<div class="col-xs-12">
-				<a href="#"><div>3. Hello</div></a>
-			</div>
+  </div>
+  </div> -->
 
-			<div class="col-xs-12">
-				<a href="#"><div>4. Hello</div></a>
-			</div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Trivia</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#about">Game</a>
+                    </li>
+                    <li>
+                        <a href="#services">Game</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Game</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-		</div>
-	</div>
+    <!-- Full Width Image Header -->
+    <header class="header-image">
+        <div class="headline">
+            <div class="container">
+                <h1>Man vs. Machine</h1>
+                <h2>Dare to play</h2>
+            </div>
+        </div>
+    </header>
 
-	<div class="container">
-		<div class="row borderBoxBlue">
-			<div class="col-xs-12">
-				<img src="./resources/images/Gameshowhost.png">
-			</div>
+    <!-- Page Content -->
+    <div class="container borderBoxOrange">
 
-			<blockquote class="oval-thought">
-       			 <p>Hello World</p>
-			</blockquote>
+        <hr class="featurette-divider">
 
-			<div class="row">
-				<div class="col-xs-12">
-					<p class="" ss="from-them">Hello World</p>
-				</div>
-			</div>
+        <!-- First Featurette -->
+        
+            
+             <!-- <div class="container"> -->
+            
+            <div id="countdown">
+                <div id='tiles' class="colorFull">00:02</div>
+                <div class="countdown-label">Time Remaining</div>
+            </div>
+                    <div class="col-md-2">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4>Player 1</h4>
+                            </div>
+                            <div class="panel-body">
+                                <p>yadayda</p>
+                            </div>
+                        </div>
+                    </div>
 
-		</div>
-	</div>
+                    <div class="col-md-8">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div>
+                                    <h4>
+                                    <span>Question </span><span>1</span>: <span>What is the capital of France?</span>
+                                    </h4>
+                                </div>
+                               <!--  <h4>Question <span>1</span>:</h4>
+                                <h4>What is the capital of France?</h4> -->
+
+
+                            </div>
+                            <div class="panel-body">
+                                <div class="answersDiv">
+                                    
+                                    <button type="button" class="btn btn-info positionBtn styleBtn" id="an1" data-ans="one">Answer</button>
+                                        <span class="alignText whoAnsweredAnimation" id="whoAnsweredThisMessage"></span>
+                                    <button type="button" class="btn btn-info positionBtn styleBtn" id="an2" data-ans="two">Answer four</button>
+                                        <span class="alignText"></span>
+                                    <button type="button" class="btn btn-info positionBtn styleBtn" id="an3" data-ans="three">Answer four</button>
+                                        <span class="alignText"></span>
+                                    <button type="button" class="btn btn-info positionBtn styleBtn" id="an4" data-ans="four">Answer four</button>
+                                        <span class="alignText"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                        
+                    <div class="col-md-2">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4>Wolfram Alpha</h4>
+                            </div>
+                            <div class="panel-body">
+                                <!-- <p>YADAYADAYD</p>   -->                               
+<!--                                 <img src="./resources/images/wolfram-alpha2.png">
+ -->                        </div>
+                        </div>
+                    </div>
+            <!-- </div> -->
+
+              <div class="col-xs-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4>Results</h4>
+                            </div>
+                            <div class="panel-body">
+                        </div>
+                        </div>
+                    </div>
+        
+
+        <hr class="featurette-divider">
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Man-vs-Machine 2017</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <!-- jQuery -->
+    <!-- <script src="js/jquery.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="./resources/javascript/app.js"></script>
+
+
+    <!-- Bootstrap Core JavaScript -->
+    <!-- <script src="js/bootstrap.js"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </body>
+
 </html>
+
+
+
+
+
+
+<!-- <div class="featurette" id="about">
+            <img class="featurette-image img-circle img-responsive pull-right" src="./resources/images/timer.png">
+            <h2 class="featurette-heading">Timer
+                <span class="text-muted">You Can Do It </span>
+            </h2>
+            <p class="lead">Rules : See if your smarter than Wolfram the Machine!</p>
+        </div>
+
+        <hr class="featurette-divider"> -->
+
+        <!-- Second Featurette -->
+        
+        <!-- <div class="featurette" id="services">
+            <img id="userimage" class="featurette-image img-circle img-responsive pull-left" src="./resources/images/userimage.jpg">
+            <h2 class="featurette-heading">User
+                <span class="text-muted">Money Money Money.</span>
+            </h2>
+            <p class="lead">Let the games Begin.</p>
+         
+         <div class="featurette" id="contact">
+            <img class="featurette-image img-circle img-responsive pull-right" src="./resources/images/wolframalpha.svg">
+            <h2 class="featurette-heading">Wolfram
+                <span class="text-muted">Im gonna beat You.</span>
+            </h2>
+            <p class="lead">Results</p>
+        
+        </div>
+
+        <hr class="featurette-divider">
+ -->
+        <!-- Third Featurette -->
+        <!-- <div class="featurette" id="contact">
+            <h2 class="featurette-heading">Results
+                <span class="text-muted">Who is the Winner.</span>
+            </h2>
+        </div>
+ -->
+
+
+
