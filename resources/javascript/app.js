@@ -66,97 +66,49 @@ var game = {
 		};
 	},
 
-	// this method calls the open trivia api for 30 questions. those questions are then sent to wolfram and logged until we get 10 back.
-	gatherQuestions: function(){
-		var queryURL = "https://opentdb.com/api.php?amount=30&category=22&type=multiple";
+	sendtoWolfram: function(triviaData){
+		for (i=0; i<triviaData.results.length;i++){
+			this.queryWolfram(triviaData.results[i].question, triviaData.results[i]);
+		};
+	},
+
+	// this method calls the trivia api for n amount of questions and sends them to the send to wolfram method when they return
+	queryTrivia: function(amount){
+		var queryURL = "https://opentdb.com/api.php?amount="+amount+"&category=22&type=multiple";
 		$.ajax({
     		url: queryURL,
     		method: "GET",
   		}).done(function(response) {
-  			for (i=0; i<response.results.length;i++){
-  				queryWolfram(response.results[i]);
+  			game.sendtoWolfram(response);
+  		});
+	},
+
+	// this method calls the wolfram API for a specified question, then if successfully answered
+	// stores the answer in an array along with the entire question object at the same index
+	queryWolfram: function(question, triviaQuestion){
+		var queryObj = {
+			appid: "A6PYJY-7QJY4JG733",
+			input: question,
+			output: "json",
+			format: "plaintext"
+		};
+		var URL = "http://api.wolframalpha.com/v2/query?";
+		var queryURL = URL + $.param(queryObj);
+		$.ajax({
+    		url: queryURL,
+    		method: "GET",
+    		crossDomain: true,
+    		dataType: "jsonp"
+  		}).done(function(response) {
+  			if (response.queryresult.success && game.ajaxAbort === false) {
+  				game.wolframResponses.push(response);
+  				game.triviaResponses.push(triviaQuestion);
   			};
   		});
-		function queryWolfram(triviaResponse){
-			var queryObj = {
-				appid: "A6PYJY-7QJY4JG733",
-				input: triviaResponse.question,
-				output: "json",
-				format: "plaintext"
-			};
-			var URL = "http://api.wolframalpha.com/v2/query?";
-			var queryURL = URL + $.param(queryObj);
-			$.ajax({
-	    		url: queryURL,
-	    		method: "GET",
-	    		crossDomain: true,
-	    		dataType: "jsonp"
-	  		}).done(function(response) {
-	  			if (response.queryresult.success && game.ajaxAbort === false) {
-	  				game.triviaResponses.push(triviaResponse);
-	  				game.wolframResponses.push(response);
-	  				if (game.triviaResponses.length === 10){
-	  					game.ajaxAbort = true;
-	  				};
-	  				console.log(game.triviaResponses);
-	  				console.log(game.wolframResponses);
-	  			};
-	  		});
-		};
-	},
+	}
 };
 
-// var questions = [];
 
-// var wolfram = {
-// 	queryWolfram: function(queryString){
-// 		var queryObj = {
-// 			appid: "A6PYJY-7QJY4JG733",
-// 			input: queryString,
-// 			output: "json",
-// 			format: "plaintext"
-// 		};
-// 		var URL = "http://api.wolframalpha.com/v2/query?";
-// 		var queryURL = URL + $.param(queryObj);
-// 		$.ajax({
-//     		url: queryURL,
-//     		method: "GET",
-//     		crossDomain: true,
-//     		dataType: "jsonp"
-//   		}).done(function(response) {
-//   			if (response.queryresult.success) {
-//   				if (questions.length < 10) {
-//   					console.log(queryString);
-//   					questions.push(queryString);
-//   					console.log(questions);
-//   				}
-//   			}
-//   		});
-// 	}
-// };
+game.queryTrivia(20);
 
-// var trivia = {
-// 	queryTrivia: function(amount){
-// 		var queryURL = "https://opentdb.com/api.php?amount="+amount+"&category=22&type=multiple";
-// 		$.ajax({
-//     		url: queryURL,
-//     		method: "GET",
-//   		}).done(function(response) {
-//   			for (i=0; i<response.results.length;i++){
-//   				// console.log(response.results[i].question);
-//   				wolfram.queryWolfram(response.results[i].question);
-//   			};
-//   			console.log(response);
-//   		});
-// 	}
-// };
 
-game.gatherQuestions();
-
-// var cleverBot = {
-
-// };
-
-// hello@provenrecruiting.com
-
-// UCSD Extension Presentation
