@@ -21,58 +21,7 @@
     <!-- Our own CSS -->
     <link href="./resources/css/style.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
-
-<!-- <body>
-<div class="fadeMe"></div>
-  <p>A bunch of content here...</p> -->
-
-<!--   <div class="splash-container">
-  <div class="spash-underlay">
-  <div class="cleverBot"> CleverBot </div>
-
-  </div>
-  </div> -->
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Trivia</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#about">Game</a>
-                    </li>
-                    <li>
-                        <a href="#services">Game</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Game</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
     <!-- Full Width Image Header -->
     <header class="header-image">
         <div class="headline">
@@ -87,66 +36,56 @@
     <div class="container borderBoxOrange">
 
         <hr class="featurette-divider">
-
-        <!-- First Featurette -->
-        
-            
-             <!-- <div class="container"> -->
             
             <div id="countdown">
                 <div id='tiles' class="colorFull"></div>
                 <div class="countdown-label">Time Remaining</div>
             </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h4>Player 1</h4>
                             </div>
-                            <div class="panel-body">
-                                <p>yadayda</p>
-                            </div>
+                            <div class="panel-body heightForPanel" id="playerOneImg"></div>
                         </div>
                     </div>
 
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <div>
                                     <h4>
-                                    <span>Question </span><span>1</span>: <span>What is the capital of France?</span>
+                                    <span>Question </span><span id="incrementQuestion">1</span>: <span id="insertQuestion">What is the capital of France?</span>
                                     </h4>
                                 </div>
-                               <!--  <h4>Question <span>1</span>:</h4>
-                                <h4>What is the capital of France?</h4> -->
-
-
                             </div>
+
                             <div class="panel-body">
-                                <div class="answersDiv">
-                                    
-                                    <button type="button" class="btn btn-info positionBtn styleBtn" id="an1" data-ans="one">Answer</button>
-                                        <span class="alignText whoAnsweredAnimation" id="whoAnsweredThisMessage"></span>
-                                    <button type="button" class="btn btn-info positionBtn styleBtn" id="an2" data-ans="two">Answer four</button>
-                                        <span class="alignText"></span>
-                                    <button type="button" class="btn btn-info positionBtn styleBtn" id="an3" data-ans="three">Answer four</button>
-                                        <span class="alignText"></span>
-                                    <button type="button" class="btn btn-info positionBtn styleBtn" id="an4" data-ans="four">Answer four</button>
-                                        <span class="alignText"></span>
+                                <div class="disAp">
+                                    <div class="answersDiv">
+                                        <button type="button" class="btn btn-info positionBtn styleBtn" id="an1" data-ans="one">Answer</button>
+                                            <span class="alignText whoAnsweredAnimation" id="whoAnsweredThisMessage"></span>
+                                        <button type="button" class="btn btn-info positionBtn styleBtn" id="an2" data-ans="two">Answer four</button>
+                                            <span class="alignText"></span>
+                                        <button type="button" class="btn btn-info positionBtn styleBtn" id="an3" data-ans="three">Answer four</button>
+                                            <span class="alignText"></span>
+                                        <button type="button" class="btn btn-info positionBtn styleBtn" id="an5" data-ans="four">Answer four</button>
+                                            <span class="alignText"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                         
                         
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <div class="panel panel-info">
                             <div class="panel-heading">
-                                <h4>Wolfram Alpha</h4>
+                                <h4>Wolfram Alpha: AI</h4>
                             </div>
-                            <div class="panel-body">
-                                <!-- <p>YADAYADAYD</p>   -->                               
-<!--                                 <img src="./resources/images/wolfram-alpha2.png">
- -->                        </div>
+                            <!-- <div class="panel-body heightForPanel" id="playerOneImg"></div> -->
+                            <div class="panel-body heightForPanel" id="wolframAlphaImg"></div>
+                            <div class="alignText" id="wolframAnswered">Wolfram Alpha Answered</div>
                         </div>
                     </div>
             <!-- </div> -->
@@ -176,12 +115,15 @@
 
     </div>
 
+    <button id="clickMeOne">Click</button>
+
 
     <!-- jQuery -->
     <!-- <script src="js/jquery.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script src="./resources/javascript/app.js"></script>
+    <script src="./resources/javascript/front.js"></script>
 
 
     <!-- Bootstrap Core JavaScript -->
@@ -192,48 +134,6 @@
 
 </html>
 
-
-
-
-
-
-<!-- <div class="featurette" id="about">
-            <img class="featurette-image img-circle img-responsive pull-right" src="./resources/images/timer.png">
-            <h2 class="featurette-heading">Timer
-                <span class="text-muted">You Can Do It </span>
-            </h2>
-            <p class="lead">Rules : See if your smarter than Wolfram the Machine!</p>
-        </div>
-
-        <hr class="featurette-divider"> -->
-
-        <!-- Second Featurette -->
-        
-        <!-- <div class="featurette" id="services">
-            <img id="userimage" class="featurette-image img-circle img-responsive pull-left" src="./resources/images/userimage.jpg">
-            <h2 class="featurette-heading">User
-                <span class="text-muted">Money Money Money.</span>
-            </h2>
-            <p class="lead">Let the games Begin.</p>
-         
-         <div class="featurette" id="contact">
-            <img class="featurette-image img-circle img-responsive pull-right" src="./resources/images/wolframalpha.svg">
-            <h2 class="featurette-heading">Wolfram
-                <span class="text-muted">Im gonna beat You.</span>
-            </h2>
-            <p class="lead">Results</p>
-        
-        </div>
-
-        <hr class="featurette-divider">
- -->
-        <!-- Third Featurette -->
-        <!-- <div class="featurette" id="contact">
-            <h2 class="featurette-heading">Results
-                <span class="text-muted">Who is the Winner.</span>
-            </h2>
-        </div>
- -->
 
 
 

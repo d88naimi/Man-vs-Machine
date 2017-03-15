@@ -16,12 +16,6 @@
 }*/
 
 
-body {
-    margin-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-}
-
-
-
 .header-image {
     display: block;
     width: 100%;
@@ -31,6 +25,7 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+
 }
 
 .headline {
@@ -50,7 +45,7 @@ body {
 }
 
 .featurette-divider {
-    margin: 80px 0;
+    margin: 30px 0;
 }
 
 .featurette {
@@ -63,7 +58,7 @@ body {
 .featurette-image.pull-left {
     margin-right: 40px;
 
-}ur
+}
 
 .featurette-image.pull-right {
     margin-left: 40px;
