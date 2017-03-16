@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 // wolfram-------------------------
 
 // appid wolfram A6PYJY-7QJY4JG733
@@ -29,6 +28,28 @@ function shuffle(array) {
 // game object contains all methods and variables associated to game
 var game = {
 
+	wolframAnswered: false,
+
+	userAnswered: false,
+
+	questionAswered: function(button){
+		if (this.wolframAnswered && this.userAnswered){
+			if ($(button).attr("answer")){
+				// user answered correctly build table
+			}
+			else{
+				// user answered incorrectly build table
+			};
+			// put in wolfram comaprison here and build table
+			this.wolframAnswered = false;
+			this.userAnswered = false;
+			this.currentQuestion++;
+		};
+	},
+
+	stopQueries: function(){
+		this.ajaxAbort = true;
+	},
 	// current question used to determine which question from trivia responses to display to page
 	currentQuestion: 1,
 
@@ -38,6 +59,7 @@ var game = {
 	// these arrays will hold our questions and responses from wolfram after the gather questions method is run
 	triviaResponses: [],
 	wolframResponses: [],
+	wolframTiming: [],
 
 	// this method will generate question n from the trivia response array and display it to the page
 	displayQuestion: function(){
@@ -52,7 +74,12 @@ var game = {
 					$("<button>")
 						.addClass("btn btn-info positionBtn styleBtn")
 						.attr("number", 4)
+						.attr("answer", true)
 						.text(this.triviaResponses[this.currentQuestion-1].correct_answer)
+						.on("click", function(){
+							game.userAnswered = true
+							game.questionAswered(this)
+						})
 				);
 				continue;
 			};
@@ -60,15 +87,24 @@ var game = {
 				$("<button>")
 					.addClass("btn btn-info positionBtn styleBtn")
 					.attr("number", i+1)
+					.attr("answer", false)
 					.text(this.triviaResponses[this.currentQuestion-1].incorrect_answers[i])
+					.on("click", function(){
+						game.userAnswered = true
+						game.questionAswered(this)
+					})
 			);
 		};
-		console.log(buttonarr)
 		buttonarr = shuffle(buttonarr);
 		$(".answersDiv").empty();
 		for(i=0; i<buttonarr.length; i++){
 			$(".answersDiv").append(buttonarr[i]);
 		};
+		setTimeout(function(){
+			game.wolframAnswered = true;
+			game.questionAswered();
+			console.log("wolfram answered");
+		}, game.wolframTiming[game.currentQuestion-1])
 	},
 
 	sendtoWolfram: function(triviaData){
@@ -106,6 +142,7 @@ var game = {
     		dataType: "jsonp"
   		}).done(function(response) {
   			if (response.queryresult.success && game.ajaxAbort === false) {
+  				game.wolframTiming.push(Math.round(response.queryresult.timing*1000));
   				game.wolframResponses.push(response.queryresult.pods[1].subpods[0].plaintext);
   				game.triviaResponses.push(triviaQuestion);
   			};
@@ -114,7 +151,11 @@ var game = {
 };
 
 
-// game.queryTrivia(20);
+game.queryTrivia(20);
+setTimeout(function(){
+	game.stopQueries();
+	game.displayQuestion();
+}, 20000);
 
 
 function startTimer(){
@@ -201,5 +242,3 @@ $(function() {
 }
 
 startTimer();
-=======
->>>>>>> Stashed changes
