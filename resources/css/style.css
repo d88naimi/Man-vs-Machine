@@ -98,7 +98,7 @@ li {
 
 .rightAnswer {
   border: 5px solid green;
-  animation: blinker 1s linear;
+  animation: blinker 2s linear;
 
 }
 
