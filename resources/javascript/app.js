@@ -51,6 +51,7 @@ var game = {
 				// user answered incorrectly build table
 				console.log("Incorrect");
 				$("#userTable").append("<td>Incorrect</td>");
+				$("#answerButton").addClass("rightAnswer")
 			};
 			// put in wolfram comparison here and build table
 			$('#userAnswered').slideToggle();
@@ -98,6 +99,7 @@ var game = {
 							.addClass("btn btn-info positionBtn styleBtn")
 							.attr("number", 4)
 							.attr("answer", true)
+							.attr("id", "answerButton")
 							.text(this.triviaResponses[this.currentQuestion-1].correct_answer)
 							.on("click", function(){
 								$(this).addClass("rightAnswer")
