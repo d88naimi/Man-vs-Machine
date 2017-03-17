@@ -54,6 +54,7 @@ var game = {
 			this.wolframAnswered = false;
 			this.userAnswered = false;
 			this.currentQuestion++;
+			$('#wolframAnswered').slideToggle();
 			this.displayQuestion();
 		};
 	},
@@ -115,6 +116,7 @@ var game = {
 		};
 		setTimeout(function(){
 			game.wolframAnswered = true;
+			$('#wolframAnswered').slideToggle();
 			game.questionAswered();
 			console.log("wolfram answered");
 			// Log somewhere that wolfram answered
