@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	$('#wolframAnswered').hide();
+	$('#userAnswered').hide();
 })
 
 
@@ -31,5 +32,14 @@ $('#an5').click(function(){
 $('#clickMeOne').on("click", function(){
 
 	$('#wolframAnswered').slideToggle();
+
+})
+
+$('#clickMeTwo').on("click", function(){
+
+	$('#userAnswered').slideToggle(function(){
+		$('#userAnswered').slideToggle();
+
+	});
 
 })
