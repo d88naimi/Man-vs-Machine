@@ -28,22 +28,33 @@ function shuffle(array) {
 // game object contains all methods and variables associated to game
 var game = {
 
+	userButton: null,
+
 	wolframAnswered: false,
 
 	userAnswered: false,
 
-	questionAswered: function(button){
+	questionAswered: function(){
+		console.log(this.userButton)
 		if (this.wolframAnswered && this.userAnswered){
-			if ($(button).attr("answer")){
+			$("#questionTable").append("<th>Q"+this.currentQuestion+"</th>");
+			if (this.userButton === "true"){
 				// user answered correctly build table
+				console.log("Correct");
+				$("#userTable").append("<td>Correct</td>");
 			}
 			else{
 				// user answered incorrectly build table
+				console.log("Incorrect");
+				$("#userTable").append("<td>Incorrect</td>");
 			};
-			// put in wolfram comaprison here and build table
+			// put in wolfram comparison here and build table
+			$("#wolframTable").append("<td>Correct</td>");
+			this.userButton = null;
 			this.wolframAnswered = false;
 			this.userAnswered = false;
 			this.currentQuestion++;
+			this.displayQuestion();
 		};
 	},
 
@@ -78,7 +89,8 @@ var game = {
 						.text(this.triviaResponses[this.currentQuestion-1].correct_answer)
 						.on("click", function(){
 							game.userAnswered = true
-							game.questionAswered(this)
+							game.userButton = $(this).attr("answer")
+							game.questionAswered()
 						})
 				);
 				continue;
@@ -91,6 +103,7 @@ var game = {
 					.text(this.triviaResponses[this.currentQuestion-1].incorrect_answers[i])
 					.on("click", function(){
 						game.userAnswered = true
+						game.userButton = $(this).attr("answer")
 						game.questionAswered(this)
 					})
 			);
@@ -104,6 +117,7 @@ var game = {
 			game.wolframAnswered = true;
 			game.questionAswered();
 			console.log("wolfram answered");
+			// Log somewhere that wolfram answered
 		}, game.wolframTiming[game.currentQuestion-1])
 	},
 
