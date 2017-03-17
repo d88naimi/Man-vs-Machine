@@ -30,6 +30,6 @@ $('#an5').click(function(){
 
 $('#clickMeOne').on("click", function(){
 
-	$('#wolframAnswered').slideDown();
+	$('#wolframAnswered').slideToggle();
 
 })
