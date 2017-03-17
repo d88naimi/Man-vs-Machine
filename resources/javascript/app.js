@@ -28,6 +28,10 @@ function shuffle(array) {
 // game object contains all methods and variables associated to game
 var game = {
 
+	gameOver: function(){
+		console.log("the game ended");
+	},
+
 	userButton: null,
 
 	wolframAnswered: false,
@@ -49,13 +53,17 @@ var game = {
 				$("#userTable").append("<td>Incorrect</td>");
 			};
 			// put in wolfram comparison here and build table
+			$('#userAnswered').slideToggle();
+			$('#wolframAnswered').slideToggle();
 			$("#wolframTable").append("<td>Correct</td>");
 			this.userButton = null;
 			this.wolframAnswered = false;
 			this.userAnswered = false;
 			this.currentQuestion++;
-			$('#wolframAnswered').slideToggle();
-			this.displayQuestion();
+			setTimeout(function(){
+				game.displayQuestion();
+			}, 3000);
+			
 		};
 	},
 
@@ -75,52 +83,64 @@ var game = {
 
 	// this method will generate question n from the trivia response array and display it to the page
 	displayQuestion: function(){
-		// set question number
-		$("#incrementQuestion").text(this.currentQuestion)
-		// set the question text
-		$("#insertQuestion").text(this.triviaResponses[this.currentQuestion-1].question)
-		var buttonarr = [];
-		for(i=0; i<4; i++){
-			if (i === 3){
+
+		if (this.currentQuestion < this.triviaResponses.length) {
+
+			// set question number
+			$("#incrementQuestion").text(this.currentQuestion)
+			// set the question text
+			$("#insertQuestion").text(this.triviaResponses[this.currentQuestion-1].question)
+			var buttonarr = [];
+			for(i=0; i<4; i++){
+				if (i === 3){
+					buttonarr.push(
+						$("<button>")
+							.addClass("btn btn-info positionBtn styleBtn")
+							.attr("number", 4)
+							.attr("answer", true)
+							.text(this.triviaResponses[this.currentQuestion-1].correct_answer)
+							.on("click", function(){
+								$(this).addClass("rightAnswer")
+								$('#userAnswered').slideToggle()
+								game.userAnswered = true
+								game.userButton = $(this).attr("answer")
+								game.questionAswered()
+							})
+					);
+					continue;
+				};
 				buttonarr.push(
 					$("<button>")
 						.addClass("btn btn-info positionBtn styleBtn")
-						.attr("number", 4)
-						.attr("answer", true)
-						.text(this.triviaResponses[this.currentQuestion-1].correct_answer)
+						.attr("number", i+1)
+						.attr("answer", false)
+						.text(this.triviaResponses[this.currentQuestion-1].incorrect_answers[i])
 						.on("click", function(){
+							$(this).addClass("wrongAnswer")
+							$('#userAnswered').slideToggle()
 							game.userAnswered = true
 							game.userButton = $(this).attr("answer")
-							game.questionAswered()
+							game.questionAswered(this)
 						})
 				);
-				continue;
 			};
-			buttonarr.push(
-				$("<button>")
-					.addClass("btn btn-info positionBtn styleBtn")
-					.attr("number", i+1)
-					.attr("answer", false)
-					.text(this.triviaResponses[this.currentQuestion-1].incorrect_answers[i])
-					.on("click", function(){
-						game.userAnswered = true
-						game.userButton = $(this).attr("answer")
-						game.questionAswered(this)
-					})
-			);
+			buttonarr = shuffle(buttonarr);
+			$(".answersDiv").empty();
+			for(i=0; i<buttonarr.length; i++){
+				$(".answersDiv").append(buttonarr[i]);
+			};
+			setTimeout(function(){
+				game.wolframAnswered = true;
+				$('#wolframAnswered').slideToggle();
+				game.questionAswered();
+				console.log("wolfram answered");
+				// Log somewhere that wolfram answered
+			}, game.wolframTiming[game.currentQuestion-1])
+		}
+		else
+		{
+			game.gameOver();
 		};
-		buttonarr = shuffle(buttonarr);
-		$(".answersDiv").empty();
-		for(i=0; i<buttonarr.length; i++){
-			$(".answersDiv").append(buttonarr[i]);
-		};
-		setTimeout(function(){
-			game.wolframAnswered = true;
-			$('#wolframAnswered').slideToggle();
-			game.questionAswered();
-			console.log("wolfram answered");
-			// Log somewhere that wolfram answered
-		}, game.wolframTiming[game.currentQuestion-1])
 	},
 
 	sendtoWolfram: function(triviaData){
