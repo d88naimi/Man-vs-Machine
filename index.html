@@ -1,164 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
+    <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    
-
-    <title>Man-vs-Machine</title>
-
-    <!-- Bootstrap Core CSS -->
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="" name="description">
+    <title>
+        Man-vs-Machine
+    </title>
+                        <!-- Bootstrap Core CSS -->
     <!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Custom CSS -->
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet">
+        <!-- Custom CSS -->
     <link href="./resources/css/one-page-wonder.css" rel="stylesheet">
-
-    <!-- Our own CSS -->
+            <!-- Our own CSS -->
     <link href="./resources/css/style.css" rel="stylesheet">
-
-</head>
+                              
+    </head>
     <!-- Full Width Image Header -->
     <header class="header-image">
         <div class="headline">
             <div class="container">
-                <h1>Man vs. Machine</h1>
-                <h2>Dare to play</h2>
+                <h1>
+                    Man vs. Machine
+                </h1>
+                <h2>
+                    Dare to play
+                </h2>
             </div>
         </div>
     </header>
-
     <!-- Page Content -->
     <div class="container borderBoxOrange">
-
         <hr class="featurette-divider">
-            
             <div id="countdown">
-                <div id='tiles' class="colorFull"></div>
-                <div class="countdown-label">Time Remaining</div>
-            </div>
-                    <div class="col-md-3">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h4>Player 1</h4>
-                            </div>
-                            <div class="panel-body heightForPanel" id="playerOneImg"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <div>
-                                    <h4>
-                                    <span>Question </span><span id="incrementQuestion">1</span>: <span id="insertQuestion">What is the capital of France?</span>
-                                    </h4>
-                                </div>
-                            </div>
-
-                            <div class="panel-body">
-                                <div class="disAp">
-                                    <div class="answersDiv">
-                                        <button type="button" class="btn btn-info positionBtn styleBtn" id="an1" data-ans="one">Answer</button>
-                                            <span class="alignText whoAnsweredAnimation" id="whoAnsweredThisMessage"></span>
-                                        <button type="button" class="btn btn-info positionBtn styleBtn" id="an2" data-ans="two">Answer four</button>
-                                            <span class="alignText"></span>
-                                        <button type="button" class="btn btn-info positionBtn styleBtn" id="an3" data-ans="three">Answer four</button>
-                                            <span class="alignText"></span>
-                                        <button type="button" class="btn btn-info positionBtn styleBtn" id="an5" data-ans="four">Answer four</button>
-                                            <span class="alignText"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        
-                        
-                    <div class="col-md-3">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h4>Wolfram Alpha: AI</h4>
-                            </div>
-                            <!-- <div class="panel-body heightForPanel" id="playerOneImg"></div> -->
-                            <div class="panel-body heightForPanel" id="wolframAlphaImg"></div>
-                            <div class="alignText" id="wolframAnswered">Wolfram Alpha Answered <span class="glyphicon glyphicon-ok"> </span></div>
-
-                        </div>
-                    </div>
-            <!-- </div> -->
-
-              <div class="col-xs-12">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <h1>Results</h1>
-                            </div>
-                           
-                
-                             
-
-                <table class="table table-bordered">       
-                 
-                   <thead>
-                         <tr id="questionTable" class="active">
-                            <th>Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr id="userTable" class="success">
-                      <td>User</td>
-                    </tr>
-                    <tr id="wolframTable" class="success">
-                      <td>Wolfram</td>
-                    </tr>
-                    
-                   </tbody>
-                 </table>
-             </div>
-
-                    </div>     
-                   </div> 
-    </div> 
-        
-
-        
-
-        <hr class="featurette-divider">
-
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Man-vs-Machine 2017</p>
+                <div class="colorFull" id="tiles">
+                </div>
+                <div class="countdown-label">
+                    Time Remaining
                 </div>
             </div>
-        </footer>
-
+            <div class="col-md-3">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4>
+                            Player 1 
+                        </h4>
+                    </div>
+                    <div class="panel-body heightForPanel" id="playerOneImg">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div>
+                            <h4>
+                                <span>
+                                    Question
+                                </span>
+                                <span id="incrementQuestion">
+                                    1
+                                </span>
+                                :
+                                <span id="insertQuestion">
+                                    What is the capital of France?
+                                </span>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="disAp">
+                            <div class="answersDiv">
+                                <button class="btn btn-info positionBtn styleBtn" data-ans="one" id="an1" type="button">
+                                    Answer
+                                </button>
+                                <span class="alignText whoAnsweredAnimation" id="whoAnsweredThisMessage">
+                                </span>
+                                <button class="btn btn-info positionBtn styleBtn" data-ans="two" id="an2" type="button">
+                                    Answer four
+                                </button>
+                                <span class="alignText">
+                                </span>
+                                <button class="btn btn-info positionBtn styleBtn" data-ans="three" id="an3" type="button">
+                                    Answer four
+                                </button>
+                                <span class="alignText">
+                                </span>
+                                <button class="btn btn-info positionBtn styleBtn" data-ans="four" id="an5" type="button">
+                                    Answer four
+                                </button>
+                                <span class="alignText">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4>
+                            Wolfram Alpha: AI 
+                        </h4>
+                    </div>
+                    <!-- <div class="panel-body heightForPanel" id="playerOneImg"></div> -->
+                    <div class="panel-body heightForPanel" id="wolframAlphaImg">
+                    </div>
+                    <div class="alignText" id="wolframAnswered">
+                        Wolfram Alpha Answered
+                        <span class="glyphicon glyphicon-ok">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- </div> -->
+            <div class="col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h1>
+                            Results
+                        </h1>
+                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="active" id="questionTable">
+                                <th>
+                                    Name
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="success" id="userTable">
+                                <td>
+                                    User
+                                </td>
+                            </tr>
+                            <tr class="success" id="wolframTable">
+                                <td>
+                                    Wolfram
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </hr>
     </div>
-
-    <button id="clickMeOne">Click</button><div class="wincc"><div class="box"></div><div class="check"></div></div>
-
-
-    <!-- jQuery -->
-    <!-- <script src="js/jquery.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <script src="./resources/javascript/app.js"></script>
-    <script src="./resources/javascript/front.js"></script>
-
-
-    <!-- Bootstrap Core JavaScript -->
-    <!-- <script src="js/bootstrap.js"></script> -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-</body>
-
 </html>
-
-
-
-
+<hr class="featurette-divider">
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>
+                    Copyright © Man-vs-Machine 2017
+                </p>
+            </div>
+        </div>
+    </footer>
+</hr>
+<button id="clickMeOne">
+    Click
+</button>
+<div class="wincc">
+    <div class="box">
+    </div>
+    <div class="check">
+    </div>
+</div>
+<!-- jQuery -->
+<!-- <script src="js/jquery.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="./resources/javascript/app.js"></script>
+<script src="./resources/javascript/front.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<!-- <script src="js/bootstrap.js"></script> -->
+<script crossorigin="anonymous" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
