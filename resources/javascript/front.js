@@ -31,7 +31,7 @@ $('#an5').click(function(){
 
 $('#clickMeOne').on("click", function(){
 
-	$('#wolframAnswered').slideToggle();
+	$('.styleBtn').addClass("wrongAnswer");
 
 })
 

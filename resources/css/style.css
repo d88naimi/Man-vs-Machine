@@ -80,26 +80,74 @@ li {
 
 }
 
-.whoAnsweredAnimation {
+.loadingAnimation {
+
+  width: 150px;
+  height: 150px;
+  margin-right: auto;
+  margin-left: auto;
+  animation-name: spinner;
+  animation-duration: 20s;
+
+
+
+
+}
+
+@keyframes spinner {
+   form {
+    transform: rotate(0deg);
+    
+  }
+
+  to {
+    transform: rotate(1470deg);
+    
+  }
+}
+
+.wrongAnswer {
+  border: 5px solid red;
+  animation: blinker 2s linear;
+  background-color: red;
+
+}
+
+.wrongAnswer:active {
+  border: 5px solid red;
+  animation: blinker 2s linear;
+  background-color: red;
+
+}
+
+.wrongAnswer:hover {
+  border: 5px solid red;
+  animation: blinker 2s linear;
+  background-color: red;
 
 }
 
 
 
-.wrongAnswer {
-  border: 5px solid red;
-  animation: blinker 1s linear;
+.rightAnswer {
+  border: 5px solid green;
+  animation: blinker 2s linear;
+<<<<<<< Updated upstream
+=======
+  background-color: green;
+>>>>>>> Stashed changes
+
+}
+
+.rightAnswer:active {
+  border: 5px solid green;
+  animation: blinker 2s linear;
+  background-color: green;
 
 }
 
 @keyframes blinker {  
   50% { opacity: 0; }
-}
-
-.rightAnswer {
-  border: 5px solid green;
-  animation: blinker 2s linear;
-
 }
 
 
@@ -166,31 +214,6 @@ li {
 .colorEmpty {
   background: #e5554e;
 }
-
-@keyframes loading {
-  0% {
-    transform-origin: 100% 100%;
-    transform: rotate(0deg);
-  }
-  100% {
-    transform-origin: 100% 100%;
-    transform: rotate(360deg);
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
