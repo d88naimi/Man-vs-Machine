@@ -26,10 +26,36 @@ function shuffle(array) {
 }
 
 // game object contains all methods and variables associated to game
+
+var timer = {
+	timerCount: 21,
+	timerStart: function(){
+		console.log("did it start");
+		timer.theTimer = setInterval(function(){
+			timer.timerCount--;
+			$("#tiles").html(timer.timerCount);
+			if (timer.timerCount <= 0) {
+				timer.timerStop();
+				timer.timerReset();
+				game.wolframAnswered = true;
+				game.userAnswered = true;
+				game.questionAswered();
+			};
+		}, 1000)
+	},
+	timerStop: function(){
+		clearInterval(timer.theTimer);
+	},
+	timerReset: function(){
+		timer.timerCount = 21;
+	}
+};
+
 var game = {
 
 	gameOver: function(){
 		console.log("the game ended");
+		timer.timerStop();
 		$(".answersDiv").empty();
 		$(".answersDiv").html("The game ended, please see the results below.");
 	},
@@ -43,6 +69,8 @@ var game = {
 	questionAswered: function(){
 		console.log(this.userButton)
 		if (this.wolframAnswered && this.userAnswered){
+			timer.timerStop();
+			clearTimeout(game.waitforwolf);
 			$("#questionTable").append("<th>Q"+this.currentQuestion+"</th>");
 			if (this.userButton === "true"){
 				// user answered correctly build table
@@ -97,6 +125,9 @@ var game = {
 	// this method will generate question n from the trivia response array and display it to the page
 	displayQuestion: function(){
 
+		timer.timerReset();
+		timer.timerStart();
+
 		if (this.currentQuestion < this.triviaResponses.length) {
 
 			// set question number
@@ -143,7 +174,7 @@ var game = {
 			for(i=0; i<buttonarr.length; i++){
 				$(".answersDiv").append(buttonarr[i]);
 			};
-			setTimeout(function(){
+			game.waitforwolf = setTimeout(function(){
 				game.wolframAnswered = true;
 				$('#wolframAnswered').slideToggle();
 				game.questionAswered();
@@ -209,86 +240,18 @@ setTimeout(function(){
 
 
 function startTimer(){
+    var count=21;
 
-//short hand document ready function
-$(function() {
+    var counter=setInterval(timer, 1000);
 
-	var awesome = {
-	 	//setting up the variable to hold the timer function
-	 	gameTimerObject: {
-			//starting the counter with no numbers defined
-			counter: null,
-
-			timer: null,
-
-			//start of the timer function if it is not already running and count down by
-			// 1 number per second.
-			start: function(callBack) {
-				if (null != this.timer) {
-					return true;
-				}
-				else {
-					var self = this;
-					this.timer = setInterval(function() {
-						var currentCount = self.updateCounter();
-
-						callBack(currentCount);
-					}, 1000);
-
-					return ("number" === this.timer);
-				}
-			},
-			//unset timer and return to null state in variables.
-			stop: function() {
-				if (null !== this.timer) {
-					clearInterval(this.timer);
-					this.timer = null;
-				}
-			},
-			//resturning updates to counter variable
-			resetCounter: function(seconds) {
-				this.counter = seconds;
-				return this.counter;
-			},
-			//checks to see is counter varible is zero
-			// if counter is greater than 0 decrease by 
-			//1 every second until 0 is reached
-			updateCounter: function() {
-				this.counter = (this.counter > 0)
-				? this.counter - 1
-				: 0;
-				return this.counter;
-			}
-	 		// End of line
-	 	},
-							//this.gameTimerObject.clone()
-							doAwesome: function(cb) {
-								var newTimer = this.gameTimerObject
-			//variable holding total time, where the counter starts
-			var totalTime = 20;
-			//sending "totalTime" variable to html div
-			// $("#time-left").html(totalTime);
-			cb(totalTime);
-			this.gameTimerObject.resetCounter(totalTime);
-			this.gameTimerObject.start(cb);
-		}
-	}; // end of awesome
-
-			// This is what your buddy needs to do to use your object.
-			awesome.doAwesome(function(timeLeft) {
-				//sending updated information to html after completing
-				// resetCounter/start functions to reset counter to 0
-				// and beging counting down from 20(line 54) to 0
-				$("#tiles").html(timeLeft);
-				//when 0 is reachead, run stop() function to stop
-				// subtracting 1 from timeleft variable and replace
-				// number with message defined in line 70
-			if (timeLeft === 0) {
-			this.stop();
-			$("#tiles").html("Times Up!");
-						}
-		});
-	});
+    function timer(){
+         count=count-1;
+     if (count === 0){
+            clearInterval(counter);
+         }
+    $("#tiles").html(count);
+    }
+timer()
 }
 
 startTimer();
