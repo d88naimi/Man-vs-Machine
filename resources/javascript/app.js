@@ -209,7 +209,7 @@ var game = {
 	// stores the answer in an array along with the entire question object at the same index
 	queryWolfram: function(question, triviaQuestion){
 		var queryObj = {
-			appid: "A6PYJY-7QJY4JG733",
+			appid: "GH725E-R9V2YKK73W",
 			input: question,
 			output: "json",
 			format: "plaintext"
@@ -232,7 +232,7 @@ var game = {
 };
 
 
-game.queryTrivia(20);
+game.queryTrivia(30);
 setTimeout(function(){
 	game.stopQueries();
 	game.displayQuestion();
