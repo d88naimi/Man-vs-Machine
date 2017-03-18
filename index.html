@@ -47,7 +47,7 @@
                                 <h4>Player 1</h4>
                             </div>
                             <div class="panel-body heightForPanel" id="playerOneImg"></div>
-                            <div class="alignText" id="userAnswered">You just answered! <span class="glyphicon glyphicon-thumbs-up"></span></div>
+                            <div class="alignText textColors" id="userAnswered">You just answered! <span class="glyphicon glyphicon-thumbs-up"></span></div>
                         </div>
                     </div>
 
@@ -64,13 +64,7 @@
                             <div class="panel-body">
                                 <div class="disAp">
                                     <div class="answersDiv">
-                                        <div class="loadingAnimation">
-                                        <svg height="100" width="100">
-                                            <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
-                                        </svg>
-                                        </div>
-
-
+                                        <div class="loader"></div>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +79,7 @@
                             </div>
                             <!-- <div class="panel-body heightForPanel" id="playerOneImg"></div> -->
                             <div class="panel-body heightForPanel" id="wolframAlphaImg"></div>
-                            <div class="alignText" id="wolframAnswered">Wolfram Alpha Answered <span class="glyphicon glyphicon-ok"></span></div>
+                            <div class="alignText textColors" id="wolframAnswered">Wolfram Alpha Answered <span class="glyphicon glyphicon-ok"></span></div>
                         </div>
                     </div>
             <!-- </div> -->
@@ -100,12 +94,11 @@
                              
 
                 <table class="table table-bordered">       
-                 
-                   <thead>
-                         <tr id="questionTable" class="active">
-                            <th>Name</th>
-                        </tr>
-                    </thead>
+                 <thead>
+                    <tr id="questionTable" class="active">
+                        <th>Name</th>
+                    </tr>
+                </thead>
                     <tbody>
                     <tr id="userTable" class="success">
                       <td>User</td>
@@ -119,29 +112,21 @@
              </div>
 
                     </div>     
-                   </div> 
-    </div> 
         
-
+    
         
-
         <hr class="featurette-divider">
 
 
         <!-- Footer -->
-        <footer>
+        
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 alignText">
                     <p>Copyright &copy; Man-vs-Machine 2017</p>
                 </div>
             </div>
-        </footer>
-
     </div>
 
-    <button id="clickMeOne">Click</button>
-    <button id="clickMeTwo">Click</button>
-    <button class="btn btn-info positionBtn styleBtn" data-ans="one" id="an1" type="button">Answer</button>
 
 
     <!-- jQuery -->

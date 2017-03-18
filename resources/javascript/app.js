@@ -90,7 +90,7 @@ var game = {
 			}
 			else{
 				$("#wolframTable").append("<td>Incorrect</td>");
-			}
+			}1
 			
 
 			console.log(game.triviaResponses[game.currentQuestion-1]);
