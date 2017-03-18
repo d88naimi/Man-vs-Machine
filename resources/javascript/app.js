@@ -214,7 +214,7 @@ var game = {
 			output: "json",
 			format: "plaintext"
 		};
-		var URL = "http://api.wolframalpha.com/v2/query?";
+		var URL = "https://api.wolframalpha.com/v2/query?";
 		var queryURL = URL + $.param(queryObj);
 		$.ajax({
     		url: queryURL,
