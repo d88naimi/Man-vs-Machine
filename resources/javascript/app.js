@@ -30,6 +30,8 @@ var game = {
 
 	gameOver: function(){
 		console.log("the game ended");
+		$(".answersDiv").empty();
+		$(".answersDiv").html("The game ended, please see the results below.");
 	},
 
 	userButton: null,
@@ -54,14 +56,24 @@ var game = {
 				$("#answerButton").addClass("rightAnswer")
 			};
 			// put in wolfram comparison here and build table
-			$('#userAnswered').slideToggle();
-			$('#wolframAnswered').slideToggle();
-			$("#wolframTable").append("<td>Correct</td>");
+			console.log(game.wolframResponses[game.currentQuestion-1].indexOf(game.triviaResponses[game.currentQuestion-1].correct_answer));
+			if(game.wolframResponses[game.currentQuestion-1].indexOf(game.triviaResponses[game.currentQuestion-1].correct_answer.trim()) !== -1){
+				$("#wolframTable").append("<td>Correct</td>");
+			}
+			else{
+				$("#wolframTable").append("<td>Incorrect</td>");
+			}
+			
+
+			console.log(game.triviaResponses[game.currentQuestion-1]);
+			console.log(game.wolframResponses[game.currentQuestion-1]);
 			this.userButton = null;
 			this.wolframAnswered = false;
 			this.userAnswered = false;
 			this.currentQuestion++;
 			setTimeout(function(){
+				$('#userAnswered').slideToggle();
+				$('#wolframAnswered').slideToggle();
 				game.displayQuestion();
 			}, 3000);
 			
